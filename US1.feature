@@ -6,8 +6,7 @@ Feature: Generar un plan de comidas automáticamente acorde a mis datos personal
 
 Scenario: Generación exitosa de un plan de comidas personalizado.
 
-Given que el usuario ha especificado sus <objetivos_del_usuario>, <edad>, <genero>,
-<peso>, <altura>, <nivel_de_actividad>
+Given que el usuario ha especificado sus <objetivos_del_usuario>, <edad>, <genero>, <peso>, <altura>, <nivel_de_actividad>
 And ha seleccionado la opción de generar un plan de comidas
 When el sistema procesa la solicitud
 Then el sistema crea un plan de comidas basado en los datos del usuario
@@ -60,8 +59,7 @@ Scenario: Falta de información para generar un plan de comidas adecuado
 
 Given que el sistema no cuenta con suficiente información sobre los <objetivos_del_usuario>
 When el usuario solicita la generación de un plan de comidas personalizado
-Then el sistema muestra un <mensaje_de_error> indicando que se necesita más información
-sobre los objetivos del usuario.
+Then el sistema muestra un <mensaje_de_error> indicando que se necesita más información sobre los objetivos del usuario.
 
 Examples: Variables de entrada:
 
