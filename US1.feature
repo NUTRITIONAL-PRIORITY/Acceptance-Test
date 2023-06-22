@@ -75,3 +75,4 @@ Examples: Variables de salida:
     | mensaje_de_error: "Por favor, proporcione información sobre   |
     | sus objetivos para generar un plan de comidas personalizado." |
     |---------------------------------------------------------------|
+
