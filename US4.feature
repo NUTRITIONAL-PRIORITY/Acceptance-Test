@@ -1,30 +1,42 @@
-Feature: Acceso a recetas saludables y sencillas
+Feature: Crear y compartir recetas y consejos de alimentación
 
-    Como usuario, quiero poder tener acceso a recetas saludables y sencillas, 
-    para poder cocinar de manera rápida, práctica y saludable.
+    Como usuario, quiero tener una opción para crear y/o compartir recetas 
+    y consejos de alimentación saludable para hacerme conocido en la aplicación.
 
-Scenario: Ofrecer opciones saludables y sencillas de recetas
+Scenario: El usuario crea una receta en la plataforma
 
-Given   que el usuario ha accedido a la sección de recetas
-When    la aplicación muestra una variedad de opciones saludables
-And     sencillas basadas en las preferencias del usuario
-Then    la aplicación muestra opciones saludables y sencillas para cocinar de manera rápida, práctica y saludable
+Given   que el usuario quiere crear una receta y guardarla en el inventario de su cuenta personal
+When    el usuario presiona el botón "Crear receta"
+Then    el sistema permitirá al usuario ingresar los ingredientes y describir los pasos a seguir para preparar la receta adecuadamente
+And     la receta se guarda en el inventario de su cuenta personal
 
-Scenario: El sistema filtra las recetas por tiempo, dificultad y contenido nutricional
+Scenario: El usuario premium sube una receta al foro de la plataforma
 
-Given   que el usuario se encuentra en la sección de recetas
-When    el usuario busca y filtra las recetas por tiempo de preparación, dificultad y contenido nutricional
-Then    el sistema muestra opciones prácticas y adaptadas a las necesidades nutricionales del usuario
+Given   que el usuario premium tiene una receta guardada en el inventario de su cuenta personal
+When    selecciona la receta y presiona el botón "Publicar en el foro"
+Then    el sistema envía la receta a pasar por dos filtros de validación de veracidad antes de ser publicada
 
 Examples:
 
-    | Tiempo de preparación | Dificultad | Contenido nutricional |
-    | 15 minutos            | Fácil      | Bajo en grasas        |
-    | 30 minutos            | Medio      | Alto en proteínas     |
-    | 60 minutos            | Difícil    | Sin gluten            |
+    |Receta: Arroz con pollo|
 
-Scenario: El sistema muestra la información detallada de la receta seleccionada
+    |---------------------------------------------------|
+    | ingredientes          | pasos                     |
+    | "Pollo"               | "1. Cortar el pollo"      |
+    | "verduras"            | "2. Cortar las verduras...|
+    | "Arroz 1/2 kilo"      | "3. Cocer el arroz"       |
+    |---------------------------------------------------|
 
-Given   que el usuario ha seleccionado una receta
-When    la aplicación proporciona información detallada sobre los ingredientes
-Then    la aplicación muestra en detalle las cantidades necesarias de ingredientes, así como instrucciones claras para la preparación
+Scenario: La receta del usuario premium pasa por el primer filtro de Inteligencia Artificial (AI)
+  
+Given   que el usuario creó y subió una receta a la plataforma
+When    la inteligencia artificial verifica que todos los ingredientes fueron ingresados correctamente
+Then    la receta se publica en el foro con la etiqueta "Receta no verificada por un Nutricionista"
+And     otros usuarios podran ver, comentar y calificar la receta
+
+Scenario: La receta del usuario premium pasa por el segundo filtro del Nutricionista
+
+Given   que la receta ha pasado el primer filtro de Inteligencia Artificial (AI) y ha sido subida al foro
+When    el nutricionista verifica la información, datos y pasos de la receta
+Then    la etiqueta de la receta en el foro cambia a "Receta verificada por un nutricionista"
+And     los usuarios pueden confiar en la calidad y el valor nutricional de dicha receta
