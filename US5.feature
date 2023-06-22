@@ -18,10 +18,12 @@ Then    el sistema muestra opciones prácticas y adaptadas a las necesidades nut
 
 Examples:
 
+    |------------------------------------------------------------|
     | Tiempo de preparación | Dificultad | Contenido nutricional |
     | 15 minutos            | Fácil      | Bajo en grasas        |
     | 30 minutos            | Medio      | Alto en proteínas     |
     | 60 minutos            | Difícil    | Sin gluten            |
+    |------------------------------------------------------------|
 
 Scenario: El sistema muestra la información detallada de la receta seleccionada
 
