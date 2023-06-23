@@ -1,51 +1,35 @@
-Feature: : Gestión del registro de comentarios y calificaciones de mi nutricionista.
+Feature: Gestión de perfiles
 
-   Como usuario quiero que la aplicación me brinde la opción de poder calificar y comentar
-   sobre mi nutricionista para exponer mi apreciación.
+    Como usuario, deseo que la aplicación me permita actualizar 
+    y corregir mi perfil, para mantenerlo actualizado
 
-Scenario: Comentarios sobre su nutricionista realizado de manera exitosa.
+Scenario Outline: Actualizar datos personales
 
-Given que el usuario se encuentra logeado <Datos_personales><password>
-And ha tenido una o más sesiones con un nutricionista.
-When el sistema le permite acceder a la sección de calificación y comentarios de su nutricionista.
-Then la aplicación permite al usuario redactar un comentario sobre su experiencia.
+Given   El usuario se encuentra registrado en la aplicacion
+When    El usuario haya cometido algún error y desea corregir sus datos registrados
+Then    La aplicación permite al usuario editar los datos de su perfil
 
-Example: Variables de entrada:
-    |-------------------------------------------|
-    | usuario id : correo electronico           |                       
-    | password: #hc123456                       |
-    | number of sessions: 10                    |
-    | enter comment: <text>                     |   
-    | save comment: input button                |  
-    |-------------------------------------------|
+Examples:
 
-Example: Variables de salida:
-    |-----------------------------------------------------------------------|
-    | show comment: <text>                                                  |
-    | show dialog: El comentario se realizo exitosamente.                   |
-    |-----------------------------------------------------------------------|
+    |---------------------------------|------------------------------------------------|
+    |      Variable de entrada        |            Variable de salida                  |
+    |---------------------------------|------------------------------------------------|
+    | Nombre: "Juan Pérez"            | Nombre actualizado: "Juan Pérez Gómez"         |
+    | Correo: "juan@example.com"      | Correo actualizado: "juan.perez@example.com"   |
+    | Teléfono: "123456789"           | Teléfono actualizado: "987654321"              |
+    |---------------------------------|------------------------------------------------|
 
+Scenario Outline: Actualizar foto de perfil
 
-Scenario: El usuario califica a su nutricionista
+Given   El usuario no cuenta con foto o tiene una foto antigua en su perfil
+When    El usuario haga clic en el botón editar foto de perfil
+Then    La aplicación permite al usuario tomar una foto o subir la imagen desde su dispositivo
 
-Given que el usuario se encuentra logeado <Datos_personales><password>
-And ha tenido una o más sesiones con un nutricionista.
-When el sistema le permite acceder a la sección de calificación y comentarios de su nutricionista.
-Then la aplicación permite al usuario calificar a su nutricionista en una escala de 1 a 5 estrellas.
+Examples:
 
-Example: Variables de entrada:
-
-    |-------------------------------------------|
-    | usuario id : correo electronico           |                       
-    | password: #hc123456                       |
-    | Numero de seciones: 10                    |
-    |-------------------------------------------|
-
-Example: Variables de salida:
-
-    |-------------------------------------------------------------------|
-    | show the grade: numero de estrellas entre 1 al 5                  |
-    | show dialog:La calificacion se realizo de manera exitosa.         |
-    |-------------------------------------------------------------------|
-
-
+    |-------------------------|------------------------|
+    |   Variable de entrada   |   Variable de salida   |
+    |-------------------------|------------------------|
+    | Foto actual: No tiene   | Nueva foto: Foto1.jpg  |
+    | Foto actual: Foto2.jpg  | Nueva foto: Foto3.jpg  |
+    |-------------------------|------------------------|

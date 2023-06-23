@@ -1,25 +1,22 @@
-Feature: Funcionalidad para comentar y calificar las recetas subidas en el foro.
+Feature: : Gestión del registro de comentarios y calificaciones de mi nutricionista.
 
-   Como usuario quiero poder comentar y/o calificar las recetas subidas en el foro,
-   ya sean recetas verificadas o no verificadas por un nutricionista para compartir
-   su experiencia y/o realizar sugerencias respecto a la receta,
-   así como para compartir fotos del plato final.
+   Como usuario, quiero que la aplicación me brinde la opción de poder calificar y comentar
+   sobre mi nutricionista para exponer mi apreciación.
 
-Scenario:  El usuario comenta y califica una receta no verificada.
+Scenario: Comentarios sobre su nutricionista realizado de manera exitosa.
 
-Given que el usuario ha accedido a una receta que ha pasado solo por el primer filtro de 
-verificación por la Inteligencia Artificial (IA) 
-And fue subida al foro como no verificada por un nutricionista.
-When el usuario lee la receta y prepara el plato.
-Then el sistema muestra la opción de comentar y calificar la receta,
-lo que permite al usuario compartir su experiencia y/o realizar sugerencias 
-respecto a la receta, así como compartir fotos del plato final.
+Given   El usuario se encuentra logeado <Datos_personales> <password>
+And     Ha tenido una o más sesiones con un nutricionista.
+When    El sistema le permite acceder a la sección de calificación y comentarios de su nutricionista.
+Then    La aplicación permite al usuario redactar un comentario sobre su experiencia.
 
 Example: Variables de entrada:
     |-------------------------------------------|
-    | icono: Verificacion IA(icon)              | 
+    | usuario id : correo electronico           |                       
+    | password: #hc123456                       |
+    | number of sessions: 10                    |
     | enter comment: <text>                     |   
-    | save comment: Input button                |                             
+    | save comment: input button                |  
     |-------------------------------------------|
 
 Example: Variables de salida:
@@ -29,48 +26,26 @@ Example: Variables de salida:
     |-----------------------------------------------------------------------|
 
 
-Scenario: El usuario comenta una receta verificada por un nutricionista.
+Scenario: El usuario califica a su nutricionista
 
-Given que el usuario ha accedido a una receta que ha pasado el segundo filtro de
-verificación por un nutricionista 
-And ha sido subida al foro como verificada por un nutricionista.
-When el usuario lee la receta y prepara el plato.
-Then el sistema muestra la opción de comentar
-And calificar la receta, lo que permite al usuario compartir su experiencia y/o realizar sugerencias
-respecto a la receta, así como compartir fotos del plato final.
+Given   El usuario se encuentra logeado <Datos_personales><password>
+And     Ha tenido una o más sesiones con un nutricionista.
+When    El sistema le permite acceder a la sección de calificación y comentarios de su nutricionista.
+Then    La aplicación permite al usuario calificar a su nutricionista en una escala de 1 a 5 estrellas.
 
 Example: Variables de entrada:
 
     |-------------------------------------------|
-    | enter comment: <text>                     |   
-    | save comment: Input button                | 
-    | image: Imagen jpg.                        |                                
+    | usuario id : correo electronico           |                       
+    | password: #hc123456                       |
+    | Numero de seciones: 10                    |
     |-------------------------------------------|
 
 Example: Variables de salida:
 
     |-------------------------------------------------------------------|
-    | show comment: <text>                                              |
-    | show image: Imagen jpg.                                           |
-    | show dialog: El comentario se realizo exitosamente.               |
-    |-------------------------------------------------------------------|
-
-Scenario: Visualizar los comentarios y calificaciones de una receta.
-Given que el usuario ha accedido a una receta en el foro.
-When el usuario ingresa a alguna receta<ver receta>.
-Then el sistema muestra los comentarios y calificaciones realizados por otros usuarios sobre dicha receta,
-lo que permite al usuario tomar en cuenta las opiniones de otros al momento de preparar la receta.
-Example: Variables de entrada:
-
-    |-------------------------------------------|
-    | selection option:  ver receta:            |                             
-    |-------------------------------------------|
-
-Example: Variables de salida:
-
-    |-------------------------------------------------------------------|
-    | show receta: <text,Imagen>                                        |
-    | show list: <muestra lista de recetas                              |
+    | show the grade: numero de estrellas entre 1 al 5                  |
+    | show dialog:La calificacion se realizo de manera exitosa.         |
     |-------------------------------------------------------------------|
 
 
